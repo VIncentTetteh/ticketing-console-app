@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"sync"
 	"time"
-
+	. "example.com/golang/dsalgo"
 	"example.com/golang/helper"
+	
 )
 
 //Package level variables
@@ -27,16 +28,44 @@ type UserData struct {
 }
 
 
+
+
 //sync to wait for thread
 var wg = sync.WaitGroup{}
 
 func main(){
 	// Greeting users
+
+	myList := []int{1,2,3,4,5,6,7}
+
+	fmt.Println(TwoSum(myList,5))
+	fmt.Println("isPalindrome?: ",IsPalindrome("racecar"))
+
+	var newUser = User {
+		ID: 1,
+		Name: "Vincent",
+		Age: 25,
+		Location: "Akuse",
+		
+	}
+
+	var addedUser = AddUser(newUser)
+	
+	fmt.Println(addedUser)
+	var userWithId,error = GetUserById(1)
+	if error != nil{
+		fmt.Println(error)
+	}else{
+		fmt.Println(userWithId)
+	}
+	
+	
+
 	greetUsers()
 
 	//Get user input
 	firstName, lastName, email, ticketBought := getUserInput()
-	
+
 	//validate user input
 	isEmailValid, isValidName := helper.InputValidator(firstName,lastName,email)
 	
